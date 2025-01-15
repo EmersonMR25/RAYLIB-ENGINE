@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\engine.h" />
+    <ClInclude Include="src\definitions.h" />
     <ClInclude Include="src\entities\player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

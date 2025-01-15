@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "raylib.h"
+#include "../definitions.h"
 
 class Engine
 {
@@ -10,6 +11,7 @@ private:
 private:
 	// Private methods
 	void _initializeWindow(const int &width, const int &height, const char *name);
+	void _run();
 public:
 	// Public Methods
 	Engine();

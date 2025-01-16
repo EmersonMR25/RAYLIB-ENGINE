@@ -24,6 +24,7 @@ void Engine::_run() {
 	while (!WindowShouldClose()) {
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
+		_drawGrid();
 		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 		EndDrawing();
 	}
@@ -31,3 +32,14 @@ void Engine::_run() {
 	CloseWindow();
 
 }	//Engine::_run()
+
+void Engine::_drawGrid() {
+	// Draw Horizontal
+	for (size_t x = 0; x < _SCREEN_HEIGHT; x += 30) {
+		DrawLine(0, x, _SCREEN_WIDTH, x, LIGHTGRAY);
+	}
+
+	for (size_t x = 0; x < _SCREEN_HEIGHT; x += 30) {
+		DrawLine(x, 0, x, _SCREEN_HEIGHT, LIGHTGRAY);
+	}
+}	// Engine::_drawGrid()

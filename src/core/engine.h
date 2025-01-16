@@ -12,6 +12,7 @@ private:
 	// Private methods
 	void _initializeWindow(const int &width, const int &height, const char *name);
 	void _run();
+	void _drawGrid();
 public:
 	// Public Methods
 	Engine();

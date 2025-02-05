@@ -1,9 +1,9 @@
 #pragma once
 
-#include "raygui.h"
-#include <iostream>
-#include "raylib.h"
 #include "../definitions.h"
+#include "raygui.h"
+#include "raylib.h"
+#include <iostream>
 
 class Engine
 {
@@ -20,6 +20,7 @@ private:
 	void _run();
 	void _drawGrid();
 	void _handleEvents();
+	void _drawGUI();
 public:
 	// Public Methods
 	Engine();

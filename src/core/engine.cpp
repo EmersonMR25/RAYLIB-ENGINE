@@ -27,6 +27,7 @@ void Engine::_run() {
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		_drawGrid();
+		_drawGUI();
 		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 		EndDrawing();
 	}
@@ -69,8 +70,8 @@ void Engine::_handleEvents() {
 		Vector2 mousePosition = GetMousePosition();
 
 		// Covert position and Adjust for _OFFSET to correctly map to grid
-		int col = (mousePosition.x - _OFFSET) / _CELL_SIZE;
-		int row = (mousePosition.y - _OFFSET) / _CELL_SIZE;
+		int col = static_cast<int>((mousePosition.x - _OFFSET) / _CELL_SIZE);
+		int row = static_cast<int>((mousePosition.y - _OFFSET) / _CELL_SIZE);
 
 		// Ensure the click is inside the grid bounds
 		// Additionally, when we click it will update in data member,
@@ -80,3 +81,8 @@ void Engine::_handleEvents() {
 		}
 	}
 }	//Engine::_handleEvents()
+
+void Engine::_drawGUI() {
+	Rectangle rect = { 50, 50, 200, 30 };
+	GuiLabel(rect, "Hello, this is a label!");
+}

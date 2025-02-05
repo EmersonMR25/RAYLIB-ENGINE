@@ -3,15 +3,18 @@
 Engine::Engine() {
 	std::cout << "Hello World" << std::endl;
 
-	_initializeWindow(static_cast<int>(_SCREEN_WIDTH), 
-					  static_cast<int>(_SCREEN_HEIGHT), 
-					  _ENGINE_TITLE);
+	_initializeWindow(static_cast<int>(_SCREEN_WIDTH),
+		static_cast<int>(_SCREEN_HEIGHT),
+		_ENGINE_TITLE);
+	std::cout << _CELL_SIZE << " = " << _VIEWER_WIDTH << " .. " << _VIEWER_HEIGHT << std::endl;
+	std::cout << _CELL_SIZE << " = " << _GRID_ROWS << " .. " << _GRID_COLS << std::endl;
 	_run();
 
 }	//Engine::Engine();
 
 Engine::~Engine() {
 	std::cout << "Bye World" << std::endl;
+
 }	//Engine::~Engine();
 
 void Engine::_initializeWindow(const int& width, const int& height, const char* name) {
@@ -20,13 +23,13 @@ void Engine::_initializeWindow(const int& width, const int& height, const char* 
 }	//Engine::_initializeWindow()
 
 void Engine::_run() {
-	
+
 	while (!WindowShouldClose()) {
 		_handleEvents();
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 		_drawGrid();
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 		EndDrawing();
 	}
 
@@ -70,10 +73,14 @@ void Engine::_handleEvents() {
 		// Adjust for _OFFSET to correctly map to grid
 		int col = (mousePosition.x - _OFFSET) / _CELL_SIZE;
 		int row = (mousePosition.y - _OFFSET) / _CELL_SIZE;
+		std::cout << mousePosition.x << ".." << mousePosition.y << std::endl;
+		std::cout << row << ".." << col << std::endl;
 
 		// Ensure the click is inside the grid bounds
+		// Additionally, when we click it will update in data member,
+		// And when the grid draws itself again then it will have the updated values (Either 1, 0) 
 		if (row >= 0 && row < _GRID_ROWS && col >= 0 && col < _GRID_COLS) {
-		_grid[row][col] = (_grid[row][col] == 0) ? 1 : 0;
+			_grid[row][col] = (_grid[row][col] == 0) ? 1 : 0;
 		}
 	}
 }	//Engine::_handleEvents()

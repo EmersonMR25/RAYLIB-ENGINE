@@ -4,10 +4,8 @@ Engine::Engine() {
 	std::cout << "Hello World" << std::endl;
 
 	_initializeWindow(static_cast<int>(_SCREEN_WIDTH),
-		static_cast<int>(_SCREEN_HEIGHT),
-		_ENGINE_TITLE);
-	std::cout << _CELL_SIZE << " = " << _VIEWER_WIDTH << " .. " << _VIEWER_HEIGHT << std::endl;
-	std::cout << _CELL_SIZE << " = " << _GRID_ROWS << " .. " << _GRID_COLS << std::endl;
+					  static_cast<int>(_SCREEN_HEIGHT),
+					  _ENGINE_TITLE);
 	_run();
 
 }	//Engine::Engine();
@@ -54,7 +52,7 @@ void Engine::_drawGrid() {
 		}
 	}
 
-	// Draw Grid Lines
+	// Draw Grid Lines. Seprated loops to make operations O(n)
 	for (int row = 0; row <= _GRID_ROWS; row++) {
 		int y = _OFFSET + (row * _CELL_SIZE);
 		DrawLine(_OFFSET, y, _OFFSET + _VIEWER_WIDTH, y, GRAY);
@@ -70,11 +68,9 @@ void Engine::_handleEvents() {
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		Vector2 mousePosition = GetMousePosition();
 
-		// Adjust for _OFFSET to correctly map to grid
+		// Covert position and Adjust for _OFFSET to correctly map to grid
 		int col = (mousePosition.x - _OFFSET) / _CELL_SIZE;
 		int row = (mousePosition.y - _OFFSET) / _CELL_SIZE;
-		std::cout << mousePosition.x << ".." << mousePosition.y << std::endl;
-		std::cout << row << ".." << col << std::endl;
 
 		// Ensure the click is inside the grid bounds
 		// Additionally, when we click it will update in data member,

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "raygui.h"
 #include <iostream>
 #include "raylib.h"
 #include "../definitions.h"

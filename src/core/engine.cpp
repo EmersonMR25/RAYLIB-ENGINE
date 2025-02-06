@@ -4,8 +4,8 @@ Engine::Engine() {
 	std::cout << "Hello World" << std::endl;
 
 	_initializeWindow(static_cast<int>(_SCREEN_WIDTH),
-					  static_cast<int>(_SCREEN_HEIGHT),
-					  _ENGINE_TITLE);
+		static_cast<int>(_SCREEN_HEIGHT),
+		_ENGINE_TITLE);
 	_run();
 
 }	//Engine::Engine();
@@ -29,11 +29,11 @@ void Engine::_run() {
 		_drawGrid();
 		_drawGUI();
 		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		DrawFPS(900, static_cast<int>(_SCREEN_HEIGHT - 40));
 		EndDrawing();
 	}
 
 	CloseWindow();
-
 }	//Engine::_run()
 
 void Engine::_drawGrid() {
@@ -83,6 +83,6 @@ void Engine::_handleEvents() {
 }	//Engine::_handleEvents()
 
 void Engine::_drawGUI() {
-	Rectangle rect = { 50, 50, 200, 30 };
-	GuiLabel(rect, "Hello, this is a label!");
+	//Rectangle rect = { 50, 50, 200, 30 };
+	//GuiLabel(rect, "Hello, this is a label!");
 }
